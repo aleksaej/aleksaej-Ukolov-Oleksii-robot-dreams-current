@@ -3,77 +3,77 @@ using UnityEngine;
 
 public class ListController : MonoBehaviour
 {
-    
+
     private List<string> items = new List<string>();
 
-    
+
     [SerializeField]
     private string inputItem;
 
-    
+
     [ContextMenu("Print List")]
     private void PrintList()
     {
         if (items.Count == 0)
         {
-            Debug.Log("Список порожній.");
+            Debug.Log("The list is empty.");
             return;
         }
 
-        
+
         string result = string.Join(", ", items);
-        Debug.Log("Елементи списку: " + result);
+        Debug.Log("List items: " + result);
     }
 
-    
+
     [ContextMenu("Add Item")]
     private void AddItem()
     {
         if (!string.IsNullOrWhiteSpace(inputItem))
         {
             items.Add(inputItem);
-            Debug.Log($"Елемент '{inputItem}' додано до списку.");
+            Debug.Log($"Item '{inputItem}' added to the list.");
         }
         else
         {
-            Debug.Log("Поле введення порожнє. Введіть значення для додавання.");
+            Debug.Log("Input field is empty. Enter a value to add.");
         }
     }
 
-   
+
     [ContextMenu("Remove Item")]
     private void RemoveItem()
     {
         if (items.Remove(inputItem))
         {
-            Debug.Log($"Елемент '{inputItem}' видалено.");
+            Debug.Log($"Item '{inputItem}' removed.");
         }
         else
         {
-            Debug.Log($"Елемент '{inputItem}' не знайдено.");
+            Debug.Log($"Item '{inputItem}' not found.");
         }
     }
 
-    
+
     [ContextMenu("Clear List")]
     private void ClearList()
     {
         items.Clear();
-        Debug.Log("Список очищено.");
+        Debug.Log("The list has been cleared.");
     }
 
-    
+
     [ContextMenu("Sort List")]
     private void SortList()
     {
         if (items.Count > 0)
         {
             items.Sort();
-            Debug.Log("Список відсортовано.");
+            Debug.Log("The list has been sorted.");
         }
         else
         {
-            Debug.Log("Немає чого сортувати.");
+            Debug.Log("There is nothing to sort.");
         }
     }
 }
